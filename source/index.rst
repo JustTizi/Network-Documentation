@@ -11,15 +11,11 @@ This page will try to give a clear overview as well as being a guide for underst
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :caption: Table of Contents:
 
-Table of Contents:
-==================
-
-* :ref:`overview`
-* :ref:`implementation`
-   * :ref:`wireguard`
-   * :ref:`nat`
-   * :ref:`firewall`
-* :ref:`sources`
+   docs/overview
+   docs/implementation/index
+   docs/implementation/wireguard
+   docs/implementation/nat
+   docs/implementation/firewall
+   docs/source
