@@ -6,12 +6,20 @@
 SepsiLab Network documentation
 ==============================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+This is the documentation for the project I made connecting multiple routers over a secure WireGuard tunnel to easily transmit MQTT sensor data.
+This page will try to give a clear overview as well as being a guide for understanding the configuration among the different devices to allow easy editing of the settings as needed.
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+Table of Contents:
+==================
+
+* :ref:`overview`
+* :ref:`implementation`
+   * :ref:`wireguard`
+   * :ref:`nat`
+   * :ref:`firewall`
+* :ref:`sources`
