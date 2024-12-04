@@ -44,7 +44,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../implementation/index.html">Implementation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sources/index.html">Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sourcelist/index.html">Sources</a></li>
 </ul>
 
         </div>
@@ -78,11 +78,11 @@
 <p>Outside, several ESP-32 microcontrollers are distributed across various ponds, connected to a Raspberry Pi, each equipped with a set of Atlas Scientific sensors. These microcontrollers will be used to collect data about the ponds they are placed in, ranging from basic measurements like temperature to the pH level of the water and even the specific minerals present. The following sensors are being used:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>EZO™ RTD Temperature Circuit</p></li>
-<li><p>EZO™ Dissolved Oxygen Circuit</p></li>
-<li><p>EZO™ Conductivity Circuit</p></li>
-<li><p>EZO™ ORP Circuit</p></li>
-<li><p>EZO™ pH Circuit</p></li>
+<li><p>EZO™ RTD Temperature Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-rtd-temperature-circuit/">[link]</a></p></li>
+<li><p>EZO™ Dissolved Oxygen Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-dissolved-oxygen-circuit/">[link]</a></p></li>
+<li><p>EZO™ Conductivity Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-conductivity-circuit/">[link]</a></p></li>
+<li><p>EZO™ ORP Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-orp-circuit/">[link]</a></p></li>
+<li><p>EZO™ pH Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-ph-circuit/">[link]</a></p></li>
 </ul>
 </div></blockquote>
 <p>All these devices will be connected to a MikroTik router, which can communicate with the Raspberry Pi via a LoRa connection. The Pi uses a radio antenna, typically intended for AM/FM signals, to connect with a weather station. This weather station is then linked to the LoRa router. The router will serve as a LoRa gateway, enabling all MQTT sensor data to be transmitted over a secure WireGuard VPN. This data will be uploaded to a ChirpStack server, after which it can be stored in a database for further analysis.</p>
