@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Firewall &mdash; SepsiLab Network  documentation</title>
+  <title>Situation &mdash; SepsiLab Network  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
@@ -42,9 +42,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Implementation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../source.html">Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../implementation/index.html">Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/index.html">Sources</a></li>
 </ul>
 
         </div>
@@ -61,9 +61,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Firewall</li>
+      <li class="breadcrumb-item active">Situation</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/docs/implementation/firewall.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/docs/overview/situation.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -71,20 +71,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="firewall">
-<h1>Firewall<a class="headerlink" href="#firewall" title="Link to this heading"></a></h1>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident ducimus modi aperiam veniam recusandae? Reiciendis repudiandae consequatur, asperiores veniam dignissimos, distinctio, dicta maiores in doloribus ipsam ipsa error. Laboriosam, ducimus!
-Vero veniam explicabo tempora nisi iste est atque omnis deserunt quasi quia deleniti asperiores ducimus ipsum inventore neque unde doloremque, laudantium, nostrum at. Distinctio excepturi reprehenderit perspiciatis ab porro recusandae.
-Magni asperiores, sint sit fuga tempore, dolorem nulla fugiat corporis suscipit sunt molestias ipsum. Ipsum soluta dolor, vero, blanditiis non consequatur eum hic quisquam maxime harum culpa, totam iste distinctio.
-Magnam voluptate, in fugit omnis fugiat cumque quaerat vero et voluptatem maiores assumenda eum, a saepe doloribus esse totam eius debitis sint voluptas tempore expedita corporis minus laborum at. Id!
-Aliquid unde nihil officiis excepturi. Delectus, maxime? Magni ex earum repellat, a unde facilis exercitationem eos corporis blanditiis facere vitae repellendus, pariatur cumque enim natus cum veniam ut ab aut.
-Asperiores quos odit accusamus error nobis non voluptate distinctio quam eum dignissimos deleniti dolor nostrum quibusdam voluptatum, ducimus facilis tenetur assumenda numquam dolores qui vitae aspernatur delectus mollitia? Laborum, nesciunt?
-Excepturi quam, deserunt iste atque, quasi sequi obcaecati architecto beatae repellendus tenetur nesciunt nobis aperiam nostrum non dolorum? Labore itaque quisquam magni nam dignissimos voluptas dolor aut illo mollitia omnis.
-Possimus corrupti optio id magnam odit quasi, voluptates dolores quos rem, animi odio debitis tenetur aliquid numquam repellendus saepe delectus vitae temporibus repudiandae commodi atque ut. Iste laudantium non eaque!
-In, sequi provident aperiam dignissimos voluptatum ducimus eveniet praesentium animi ab totam eaque blanditiis maiores vel commodi amet, labore ipsa harum, corrupti possimus veniam? Earum pariatur inventore sapiente doloribus aspernatur?
-Quisquam voluptatem laudantium nihil cum, cumque tempore minus distinctio, vel veritatis voluptates, autem veniam dignissimos asperiores ullam deserunt inventore quo quod corrupti dolore doloremque. Delectus obcaecati quod laudantium necessitatibus rerum.</p>
-<img alt="Firewall settings of router SepsiLab" src="../../_images/sepsilab_fw.png" />
-<img alt="Firewall settings of router sagan" src="../../_images/sagan_fw.png" />
+  <section id="situation">
+<h1>Situation<a class="headerlink" href="#situation" title="Link to this heading"></a></h1>
+<p>To start off, it would be a good idea to understand the situation we’ve got going on.</p>
+<img alt="Image of a physical diagram" src="../../_images/diagram.png" />
+<p>Outside, several ESP-32 microcontrollers are distributed across various ponds, connected to a Raspberry Pi, each equipped with a set of Atlas Scientific sensors. These microcontrollers will be used to collect data about the ponds they are placed in, ranging from basic measurements like temperature to the pH level of the water and even the specific minerals present. The following sensors are being used:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>EZO™ RTD Temperature Circuit</p></li>
+<li><p>EZO™ Dissolved Oxygen Circuit</p></li>
+<li><p>EZO™ Conductivity Circuit</p></li>
+<li><p>EZO™ ORP Circuit</p></li>
+<li><p>EZO™ pH Circuit</p></li>
+</ul>
+</div></blockquote>
+<p>All these devices will be connected to a MikroTik router, which can communicate with the Raspberry Pi via a LoRa connection. The Pi uses a radio antenna, typically intended for AM/FM signals, to connect with a weather station. This weather station is then linked to the LoRa router. The router will serve as a LoRa gateway, enabling all MQTT sensor data to be transmitted over a secure WireGuard VPN. This data will be uploaded to a ChirpStack server, after which it can be stored in a database for further analysis.</p>
 </section>
 
 

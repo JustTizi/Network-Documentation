@@ -13,9 +13,6 @@ This page will try to give a clear overview as well as being a guide for underst
 .. toctree::
    :caption: Table of Contents:
 
-   docs/overview
+   docs/overview/index
    docs/implementation/index
-   docs/implementation/wireguard
-   docs/implementation/nat
-   docs/implementation/firewall
-   docs/source
+   docs/sourcelist/index

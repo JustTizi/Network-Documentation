@@ -1,16 +1,9 @@
-Overview
-========
-
-Here, you will find a general overview of the project.
-This includes why I made this project but also explains the context of the problem.
-
-
 Situation
 ---------
 
 To start off, it would be a good idea to understand the situation we've got going on.
 
-.. image:: ../img/diagram.png
+.. image:: ../../img/diagram.png
     :alt: Image of a physical diagram
 
 Outside, several ESP-32 microcontrollers are distributed across various ponds, connected to a Raspberry Pi, each equipped with a set of Atlas Scientific sensors. These microcontrollers will be used to collect data about the ponds they are placed in, ranging from basic measurements like temperature to the pH level of the water and even the specific minerals present. The following sensors are being used:
