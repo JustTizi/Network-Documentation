@@ -1,7 +1,7 @@
 NAT
 ---
 
-*For more information on NAT, check the* `Wikipedia page <https://wikipedia.org/wiki/Network_address_translation>`_
+.. seealso:: For more information on NAT, check the `Wikipedia page <https://wikipedia.org/wiki/Network_address_translation>`_
 
 After setting up our WireGuard interface, we can set up our NAT.
 
