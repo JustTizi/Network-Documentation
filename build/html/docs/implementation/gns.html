@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Situation &mdash; SepsiLab Network  documentation</title>
+  <title>GNS3 &mdash; SepsiLab Network  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
@@ -42,8 +42,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../implementation/index.html">Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Implementation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sourcelist/index.html">Sources</a></li>
 </ul>
 
@@ -61,9 +61,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Situation</li>
+      <li class="breadcrumb-item active">GNS3</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/docs/overview/situation.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/docs/implementation/gns.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -71,21 +71,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="situation">
-<h1>Situation<a class="headerlink" href="#situation" title="Link to this heading"></a></h1>
-<p>To start off, it would be a good idea to understand the situation we’ve got going on.</p>
-<img alt="Image of a physical diagram" src="../../_images/diagram.png" />
-<p>Outside, several ESP-32 microcontrollers are distributed across various ponds, connected to a Raspberry Pi, each equipped with a set of Atlas Scientific sensors. These microcontrollers will be used to collect data about the ponds they are placed in, ranging from basic measurements like temperature, all the way to the pH level of the water or even the specific minerals present. The following sensors are being used:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>EZO™ RTD Temperature Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-rtd-temperature-circuit/">[link]</a></p></li>
-<li><p>EZO™ Dissolved Oxygen Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-dissolved-oxygen-circuit/">[link]</a></p></li>
-<li><p>EZO™ Conductivity Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-conductivity-circuit/">[link]</a></p></li>
-<li><p>EZO™ ORP Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-orp-circuit/">[link]</a></p></li>
-<li><p>EZO™ pH Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-ph-circuit/">[link]</a></p></li>
-</ul>
-</div></blockquote>
-<p>All these devices will be connected to a MikroTik router, which can communicate with the Raspberry Pi via a LoRa connection. The Pi uses a radio antenna, typically intended for AM/FM signals, to connect with a weather station. This weather station is then linked to the LoRa router. The router will serve as a LoRa gateway, enabling all MQTT sensor data to be transmitted over a secure WireGuard VPN. This data will be uploaded to a ChirpStack server, after which it can be stored in a database for further analysis.</p>
+  <section id="gns3">
+<h1>GNS3<a class="headerlink" href="#gns3" title="Link to this heading"></a></h1>
+<p><em>For more information about GNS3, check the</em> <a class="reference external" href="https://www.gns3.com/">GNS3 homepage</a></p>
+<p>Before implementing the real world solution, I first tested everything with GNS3. This allowed me to try different configurations in a safe environment. The setup looks as follows:</p>
+<img alt="../../_images/network_gns.png" src="../../_images/network_gns.png" />
+<p>Because I was unable to replicate an ISP, I substituted it by using a switch. This solution isn’t the exact same as it would be if there was an actual ISP, but it was good enough to simulate the intended solution.</p>
+<p>Since the implemented solution is very similar to the simulated one, I won’t go into more depth here.</p>
 </section>
 
 

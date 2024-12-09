@@ -5,16 +5,16 @@ In order to be able to have the MQTT data arrive inside the SepsiLab network, mu
 
 I'll be going over the following points:
 
+* `GNS3`_
 * `WireGuard`_
 * `NAT`_
 * `Firewall`_
 
 
+.. include:: ./gns.rst
+
 .. include:: ./wireguard.rst
-    :name: wireguard
 
 .. include:: ./nat.rst
-    :name: nat
 
 .. include:: ./firewall.rst
-    :name: firewall
