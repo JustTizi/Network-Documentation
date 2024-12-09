@@ -1,8 +1,8 @@
 GNS3
 ----
-.. _GNS3 homepage: https://www.gns3.com/
 
-*For more information about GNS3, check the* `GNS3 homepage`_
+
+.. seealso:: For more information about GNS3, check the `GNS3 homepage https://www.gns3.com/`_
 
 
 
