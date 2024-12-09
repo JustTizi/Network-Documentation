@@ -1,7 +1,7 @@
 WireGuard
 ---------
 
-*For more information on WireGuard and it's use, visit the* `WireGuard website <https://www.wireguard.com/>_`
+*For more information on WireGuard and it's use, visit the* `WireGuard website <https://www.wireguard.com/>`_
 
 First things first, before we can setup our NAT settings and firewall, we need to create the WireGuard interfaces we need on all routers.
 
