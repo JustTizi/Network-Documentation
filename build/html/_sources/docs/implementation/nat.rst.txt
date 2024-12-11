@@ -5,8 +5,12 @@ NAT
 
 After setting up our WireGuard interface, we can set up our NAT.
 
+*SepsiLab:*
+
 .. image:: ../../img/nat/sepsilab_nat.png
     :alt: NAT settings of router SepsiLab
+
+*sagan:*
 
 .. image:: ../../img/nat/sagan_nat.png
     :alt: NAT settings of router sagan

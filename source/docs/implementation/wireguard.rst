@@ -11,7 +11,7 @@ First things first, before we can setup our NAT settings and firewall, we need t
 The interfaces look similar on all routers, the only difference will be the generated Public and Private Key and the IP address we will assign to it.
 
 
-SepsiLab:
+*SepsiLab:*
 
 .. image:: ../../img/wg/sepsilab_int_wg.png
     :alt: WireGuard interface of router SepsiLab
@@ -19,7 +19,7 @@ SepsiLab:
 .. image:: ../../img/wg/sepsilab_ip_int.png
     :alt: IP interfaces of router SepsiLab
 
-sagan:
+*sagan:*
 
 .. image:: ../../img/wg/sagan_int_wg.png
     :alt: WireGuard interface of router sagan

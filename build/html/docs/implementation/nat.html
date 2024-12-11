@@ -78,7 +78,9 @@
 <p>For more information on NAT, check the <a class="reference external" href="https://wikipedia.org/wiki/Network_address_translation">Wikipedia page</a></p>
 </div>
 <p>After setting up our WireGuard interface, we can set up our NAT.</p>
+<p><em>SepsiLab:</em></p>
 <img alt="NAT settings of router SepsiLab" src="../../_images/sepsilab_nat.png" />
+<p><em>sagan:</em></p>
 <img alt="NAT settings of router sagan" src="../../_images/sagan_nat.png" />
 <p>For our setup, I’ve opted to use the <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT#NAT-Masquerade">Masquerade functionality</a> of the MikroTik devices. This setting is similar to PAT and will allow us to use devices on our local network to connect over the VPN tunnel as well.</p>
 <p>On router sagan, we do not need the <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT#NAT-Masquerade">Masquerade functionality</a> for the WireGuard interface, as such it’s only configured for the WAN interface.</p>
