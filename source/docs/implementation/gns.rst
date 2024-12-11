@@ -2,7 +2,7 @@ GNS3
 ----
 
 
-.. seealso:: For more information about GNS3, check the `GNS3 homepage https://www.gns3.com/`_
+.. seealso:: For more information about GNS3, check the `GNS3 homepage <https://www.gns3.com/>`_
 
 
 

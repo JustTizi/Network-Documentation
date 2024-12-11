@@ -76,6 +76,25 @@
 <p>To secure the routers from unauthorized access, we have to configure some firewall rules. These are used to filter through traffic coming into the router.</p>
 <img alt="Firewall settings of router SepsiLab" src="../../_images/sepsilab_fw.png" />
 <img alt="Firewall settings of router sagan" src="../../_images/sagan_fw.png" />
+<p>Here’s a quick explanation of what each firewall rule does:</p>
+<p><em>SepsiLab:</em></p>
+<ul class="simple">
+<li><p><strong>Rule 1</strong>: FastTrack established and related connections in the forward chain to improve performance.</p></li>
+<li><p><strong>Rule 2</strong>: Allow established and related connections in the input chain for traffic targeting the router.</p></li>
+<li><p><strong>Rule 3</strong>: Allow established and related connections in the forward chain for traffic passing through the router.</p></li>
+<li><p><strong>Rule 4</strong>: Allow incoming WireGuard protocol (UDP) traffic on the input chain.</p></li>
+<li><p><strong>Rule 5</strong>: Allow input traffic from the WireGuard subnet (10.253.3.0/24).</p></li>
+<li><p><strong>Rule 6</strong>: Allow input traffic from local interfaces.</p></li>
+<li><p><strong>Rule 7</strong>: Allow forwarded traffic from the WireGuard subnet (10.253.3.0/24).</p></li>
+<li><p><strong>Rule 8</strong>: Allow forwarded traffic from local interfaces.</p></li>
+<li><p><strong>Rule 9</strong>: Drop all other traffic in the forward chain.</p></li>
+<li><p><strong>Rule 10</strong>: Drop all other traffic in the input chain.</p></li>
+</ul>
+<p><em>sagan:</em></p>
+<ul class="simple">
+<li><p><strong>Rule 1</strong>: Allow forwarded traffic from router SepsiLab to router Gala</p></li>
+<li><p><strong>Rule 2</strong>: Allow forwarded traffic from router Gala to router SepsiLab</p></li>
+</ul>
 </section>
 
 

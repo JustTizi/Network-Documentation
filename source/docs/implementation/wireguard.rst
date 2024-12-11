@@ -8,7 +8,7 @@ First things first, before we can setup our NAT settings and firewall, we need t
 .. image:: ../../img/wg/interface_wg.png
     :alt: WireGuard interface on MikroTik router
 
-The interface look similar on all routers, the only difference will be the generated Public and Private Key and the IP address we will assign to it.
+The interfaces look similar on all routers, the only difference will be the generated Public and Private Key and the IP address we will assign to it.
 
 
 SepsiLab:
