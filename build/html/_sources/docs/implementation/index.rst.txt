@@ -18,3 +18,8 @@ I'll be going over the following points:
 .. include:: ./nat.rst
 
 .. include:: ./firewall.rst
+
+And finally with all of this configured, we have connectivity between the routers.
+
+.. image:: ../../img/test.png
+    :alt: Ping test from device on SepsiLab network to Gala
