@@ -13,3 +13,5 @@ Before implementing the real world solution, I first tested everything with GNS3
 Because I was unable to replicate an ISP, I substituted it by using a switch. This solution isn't the exact same as it would be if there was an actual ISP, but it was good enough to simulate the intended solution.
 
 Since the implemented solution is very similar to the simulated one, I won't go into more depth here.
+
+.. note:: It's always a good idea to test your solution in a simulated lab environment first to make sure you don't break anything!

@@ -73,17 +73,17 @@
              
   <section id="nat">
 <h1>NAT<a class="headerlink" href="#nat" title="Link to this heading"></a></h1>
+<p>Network Address Translation, or NAT for short, is a way to limit the number of IP addresses private networks need. It does this by translating all local address on a network, like 192.168.0.0/24, to a public address assigned by an ISP.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>For more information on NAT, check the <a class="reference external" href="https://wikipedia.org/wiki/Network_address_translation">Wikipedia page</a></p>
+<p>For more information on NAT and its different implementations, check the <a class="reference external" href="https://wikipedia.org/wiki/Network_address_translation">Wikipedia page</a></p>
 </div>
-<p>After setting up our WireGuard interface, we can set up our NAT.</p>
+<p>For our setup, I’ve opted to use the <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT#NAT-Masquerade">Masquerade functionality</a> of the MikroTik devices. This setting is similar to PAT and will allow us to use devices on our local network to connect over the VPN tunnel as well.</p>
+<p>On router sagan, we do not need the <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT#NAT-Masquerade">Masquerade functionality</a> for the WireGuard interface. This is because the devices on Sagan’s local network do not need to access resources on the VPN network. As such, the only Masquerade we have is to connect to the internet.</p>
 <p><em>SepsiLab:</em></p>
 <img alt="NAT settings of router SepsiLab" src="../../_images/sepsilab_nat.png" />
 <p><em>sagan:</em></p>
 <img alt="NAT settings of router sagan" src="../../_images/sagan_nat.png" />
-<p>For our setup, I’ve opted to use the <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT#NAT-Masquerade">Masquerade functionality</a> of the MikroTik devices. This setting is similar to PAT and will allow us to use devices on our local network to connect over the VPN tunnel as well.</p>
-<p>On router sagan, we do not need the <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT#NAT-Masquerade">Masquerade functionality</a> for the WireGuard interface, as such it’s only configured for the WAN interface.</p>
 </section>
 
 

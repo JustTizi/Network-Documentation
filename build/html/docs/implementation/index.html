@@ -50,6 +50,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#wireguard">WireGuard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nat">NAT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#firewall">Firewall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-results">Test results</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sourcelist/index.html">Sources</a></li>
@@ -88,6 +89,7 @@
 <li><p><a class="reference internal" href="#wireguard">WireGuard</a></p></li>
 <li><p><a class="reference internal" href="#nat">NAT</a></p></li>
 <li><p><a class="reference internal" href="#firewall">Firewall</a></p></li>
+<li><p><a class="reference internal" href="#test-results">Test results</a></p></li>
 </ul>
 <section id="gns3">
 <h2>GNS3<a class="headerlink" href="#gns3" title="Link to this heading"></a></h2>
@@ -99,50 +101,79 @@
 <img alt="../../_images/network_gns.png" src="../../_images/network_gns.png" />
 <p>Because I was unable to replicate an ISP, I substituted it by using a switch. This solution isn’t the exact same as it would be if there was an actual ISP, but it was good enough to simulate the intended solution.</p>
 <p>Since the implemented solution is very similar to the simulated one, I won’t go into more depth here.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It’s always a good idea to test your solution in a simulated lab environment first to make sure you don’t break anything!</p>
+</div>
 </section>
 <section id="wireguard">
 <h2>WireGuard<a class="headerlink" href="#wireguard" title="Link to this heading"></a></h2>
+<p>WireGuard is a general purpose VPN which is meant to be simple, fast and secure. We will be using it to create a secure connection between different networks we might need to access.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>For more information on WireGuard and it’s use, visit the <a class="reference external" href="https://www.wireguard.com/">WireGuard website</a></p>
 </div>
-<p>First things first, before we can setup our NAT settings and firewall, we need to create the WireGuard interfaces we need on all routers.</p>
+<p>First things first, we have to create the WireGuard interfaces we need on all routers.</p>
 <img alt="WireGuard interface on MikroTik router" src="../../_images/interface_wg.png" />
 <p>The interfaces look similar on all routers, the only difference will be the generated Public and Private Key and the IP address we will assign to it.</p>
+<p>The Public and Private key will be used to encrypt and decrypt the data that is going to be travelling over the VPN tunnel.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Never share your Private key with anyone, as this will compromise your data. The Public key is the only one that will be necessary for configuration on other devices.</p>
+</div>
 <p><em>SepsiLab:</em></p>
 <img alt="WireGuard interface of router SepsiLab" src="../../_images/sepsilab_int_wg.png" />
 <img alt="IP interfaces of router SepsiLab" src="../../_images/sepsilab_ip_int.png" />
 <p><em>sagan:</em></p>
 <img alt="WireGuard interface of router sagan" src="../../_images/sagan_int_wg.png" />
 <img alt="IP interfaces of router sagan" src="../../_images/sagan_ip_int.png" />
-<p>After setting up the interface, we need to establish the WireGuard tunnel by setting up the peers. To connect the routers, we only need 1 public IP address. In our case, router sagan is the publicly reachable device. As such, we can configure the endpoint address for the SepsiLab router to point towards router sagan.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We don’t have to configure any static routes, the router learns the correct route dynamically.</p>
+</div>
+<p>After setting up the interface, we need to establish the WireGuard tunnel by setting up the peers. To connect the routers, we only need one public IP address. In our case, router sagan is the publicly reachable device. As such, we can configure the endpoint address for the SepsiLab router to point towards router sagan.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Because we only have one public IP address the only way the WireGuard tunnel can be established, is when router SepsiLab initiates it. Router sagan will not be able to find the SepsiLab router otherwise.</p>
+</div>
 <img alt="WireGuard peer configuration of router SepsiLab" src="../../_images/sepsilab_peer_wg.png" />
 <img alt="WireGuard peer configuration of router sagan" src="../../_images/sagan_peer_wg.png" />
-<p>However, this does mean that the only way the WireGuard tunnel can be established, is when router SepsiLab initiates it. Router sagan will not be able to find the SepsiLab router otherwise.</p>
+<p>If you look closely, you can see that the allowed addresses are different for both configurations. This is because I want the SepsiLab router to be able to accept all devices on the VPN network.</p>
+<p>For router Sagan, the only address that will send data over that specific tunnel, will be the address of the SepsiLab router. This is just a safety precaution, and won’t impact the connectivity in any way.</p>
+<p>And with that, we have configured a WireGuard connection between the routers!</p>
+<p>A quick ping test will show the following:</p>
+<img alt="Ping result from SepsiLab to router Sagan" src="../../_images/ping_test_wg.png" />
+<p>Now that we’ve successfully checked if our WireGuard connection works, we can move on to configuring the NAT rules.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In our setup, router Gala was already connected to router Sagan. Later on, we will be connecting to Gala from the SepsiLab too.</p>
+</div>
 </section>
 <section id="nat">
 <h2>NAT<a class="headerlink" href="#nat" title="Link to this heading"></a></h2>
+<p>Network Address Translation, or NAT for short, is a way to limit the number of IP addresses private networks need. It does this by translating all local address on a network, like 192.168.0.0/24, to a public address assigned by an ISP.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>For more information on NAT, check the <a class="reference external" href="https://wikipedia.org/wiki/Network_address_translation">Wikipedia page</a></p>
+<p>For more information on NAT and its different implementations, check the <a class="reference external" href="https://wikipedia.org/wiki/Network_address_translation">Wikipedia page</a></p>
 </div>
-<p>After setting up our WireGuard interface, we can set up our NAT.</p>
+<p>For our setup, I’ve opted to use the <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT#NAT-Masquerade">Masquerade functionality</a> of the MikroTik devices. This setting is similar to PAT and will allow us to use devices on our local network to connect over the VPN tunnel as well.</p>
+<p>On router sagan, we do not need the <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT#NAT-Masquerade">Masquerade functionality</a> for the WireGuard interface. This is because the devices on Sagan’s local network do not need to access resources on the VPN network. As such, the only Masquerade we have is to connect to the internet.</p>
 <p><em>SepsiLab:</em></p>
 <img alt="NAT settings of router SepsiLab" src="../../_images/sepsilab_nat.png" />
 <p><em>sagan:</em></p>
 <img alt="NAT settings of router sagan" src="../../_images/sagan_nat.png" />
-<p>For our setup, I’ve opted to use the <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT#NAT-Masquerade">Masquerade functionality</a> of the MikroTik devices. This setting is similar to PAT and will allow us to use devices on our local network to connect over the VPN tunnel as well.</p>
-<p>On router sagan, we do not need the <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT#NAT-Masquerade">Masquerade functionality</a> for the WireGuard interface, as such it’s only configured for the WAN interface.</p>
 </section>
 <section id="firewall">
 <h2>Firewall<a class="headerlink" href="#firewall" title="Link to this heading"></a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more information about firewall configuration on MikroTik devices, visit <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/48660574/Filter">MikroTik’s Firewall documentation</a></p>
+</div>
 <p>To secure the routers from unauthorized access, we have to configure some firewall rules. These are used to filter through traffic coming into the router.</p>
-<img alt="Firewall settings of router SepsiLab" src="../../_images/sepsilab_fw.png" />
-<img alt="Firewall settings of router sagan" src="../../_images/sagan_fw.png" />
-<p>Here’s a quick explanation of what each firewall rule does:</p>
 <p><em>SepsiLab:</em></p>
+<img alt="Firewall settings of router SepsiLab" src="../../_images/sepsilab_fw.png" />
 <ul class="simple">
-<li><p><strong>Rule 1</strong>: FastTrack established and related connections in the forward chain to improve performance.</p></li>
+<li><p><strong>Rule 1</strong>: FastTrack established and related connections in the forward chain for faster data throughput, the firewall will work with new connections only.</p></li>
 <li><p><strong>Rule 2</strong>: Allow established and related connections in the input chain for traffic targeting the router.</p></li>
 <li><p><strong>Rule 3</strong>: Allow established and related connections in the forward chain for traffic passing through the router.</p></li>
 <li><p><strong>Rule 4</strong>: Allow incoming WireGuard protocol (UDP) traffic on the input chain.</p></li>
@@ -154,12 +185,23 @@
 <li><p><strong>Rule 10</strong>: Drop all other traffic in the input chain.</p></li>
 </ul>
 <p><em>sagan:</em></p>
+<img alt="Firewall settings of router sagan" src="../../_images/sagan_fw.png" />
 <ul class="simple">
 <li><p><strong>Rule 1</strong>: Allow forwarded traffic from router SepsiLab to router Gala</p></li>
 <li><p><strong>Rule 2</strong>: Allow forwarded traffic from router Gala to router SepsiLab</p></li>
 </ul>
+</section>
+<section id="test-results">
+<h2>Test results<a class="headerlink" href="#test-results" title="Link to this heading"></a></h2>
 <p>And finally with all of this configured, we have connectivity between the routers.</p>
-<img alt="Ping test from device on SepsiLab network to Gala" src="../../_images/test.png" />
+<p><em>Ping test from local device on SepsiLab network to Sagan:</em></p>
+<img alt="Ping test from local device on SepsiLab network to Sagan" src="../../_images/pc_sagan_ping.png" />
+<p><em>Traceroute test from local device on SepsiLab network to Sagan:</em></p>
+<img alt="Traceroute test from local device on SepsiLab network to Sagan" src="../../_images/pc_sagan_trace.png" />
+<p><em>Ping test from local device on SepsiLab network to Gala:</em></p>
+<img alt="Ping test from local device on SepsiLab network to Gala" src="../../_images/pc_gala_ping.png" />
+<p><em>Traceroute test from local device on SepsiLab network to Gala:</em></p>
+<img alt="Traceroute test from local device on SepsiLab network to Gala" src="../../_images/pc_gala_trace.png" />
 </section>
 </section>
 

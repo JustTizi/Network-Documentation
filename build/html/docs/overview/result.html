@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Overview &mdash; SepsiLab Network  documentation</title>
+  <title>End result &mdash; SepsiLab Network  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
@@ -18,9 +18,7 @@
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Implementation" href="../implementation/index.html" />
-    <link rel="prev" title="SepsiLab Network documentation" href="../../index.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,12 +41,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#situation">Situation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#end-result">End result</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../implementation/index.html">Implementation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sourcelist/index.html">Sources</a></li>
 </ul>
@@ -67,9 +61,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Overview</li>
+      <li class="breadcrumb-item active">End result</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/docs/overview/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/docs/overview/result.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,28 +71,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
-<p>Here, you will find a general overview of the project.
-This includes why I made this project but also explains the context of the problem.</p>
-<section id="situation">
-<h2>Situation<a class="headerlink" href="#situation" title="Link to this heading"></a></h2>
-<p>To start off, it would be a good idea to understand the situation we’ve got going on.</p>
-<img alt="Image of a physical diagram" src="../../_images/diagram.png" />
-<p>Outside, several ESP-32 microcontrollers are distributed across various ponds, connected to a Raspberry Pi, each equipped with a set of Atlas Scientific sensors. These microcontrollers will be used to collect data about the ponds they are placed in, ranging from basic measurements like temperature, all the way to the pH level of the water or even the specific minerals present. The following sensors are being used:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>EZO™ RTD Temperature Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-rtd-temperature-circuit/">[link]</a></p></li>
-<li><p>EZO™ Dissolved Oxygen Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-dissolved-oxygen-circuit/">[link]</a></p></li>
-<li><p>EZO™ Conductivity Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-conductivity-circuit/">[link]</a></p></li>
-<li><p>EZO™ ORP Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-orp-circuit/">[link]</a></p></li>
-<li><p>EZO™ pH Circuit <a class="reference external" href="https://atlas-scientific.com/embedded-solutions/ezo-ph-circuit/">[link]</a></p></li>
-</ul>
-</div></blockquote>
-<p>All these devices will be connected to a MikroTik router, which can communicate with the Raspberry Pi via a LoRa connection. The Pi uses a radio antenna, typically intended for AM/FM signals, to connect with a weather station. This weather station is then linked to the LoRa router. The router will serve as a LoRa gateway, enabling all MQTT sensor data to be transmitted over a secure WireGuard VPN. This data will be uploaded to a ChirpStack server, after which it can be stored in a database for further analysis.</p>
-</section>
-<section id="end-result">
-<h2>End result<a class="headerlink" href="#end-result" title="Link to this heading"></a></h2>
+  <section id="end-result">
+<h1>End result<a class="headerlink" href="#end-result" title="Link to this heading"></a></h1>
 <p>Now the question remains, what are we going to implement to make this work?</p>
 <p>We will be setting up a WireGuard VPN network on our MikroTik routers, with a hub-and-spoke topology. This means each spoke router will be able to connect to the central hub router, allowing for secure communication between remote sites.</p>
 <p>So what do we need to do?</p>
@@ -113,15 +87,11 @@ This includes why I made this project but also explains the context of the probl
 <p>After we’ve done all of that, we should be able to connect over the VPN tunnel.</p>
 <p>With that out of the way, let’s see how we can set this up ourselves.</p>
 </section>
-</section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../../index.html" class="btn btn-neutral float-left" title="SepsiLab Network documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../implementation/index.html" class="btn btn-neutral float-right" title="Implementation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

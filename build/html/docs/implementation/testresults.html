@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GNS3 &mdash; SepsiLab Network  documentation</title>
+  <title>Test results &mdash; SepsiLab Network  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
@@ -61,9 +61,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">GNS3</li>
+      <li class="breadcrumb-item active">Test results</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/docs/implementation/gns.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/docs/implementation/testresults.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -71,20 +71,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="gns3">
-<h1>GNS3<a class="headerlink" href="#gns3" title="Link to this heading"></a></h1>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>For more information about GNS3, check the <a class="reference external" href="https://www.gns3.com/">GNS3 homepage</a></p>
-</div>
-<p>Before implementing the real world solution, I first tested everything with GNS3. This allowed me to try different configurations in a safe environment. The setup looks as follows:</p>
-<img alt="../../_images/network_gns.png" src="../../_images/network_gns.png" />
-<p>Because I was unable to replicate an ISP, I substituted it by using a switch. This solution isn’t the exact same as it would be if there was an actual ISP, but it was good enough to simulate the intended solution.</p>
-<p>Since the implemented solution is very similar to the simulated one, I won’t go into more depth here.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It’s always a good idea to test your solution in a simulated lab environment first to make sure you don’t break anything!</p>
-</div>
+  <section id="test-results">
+<h1>Test results<a class="headerlink" href="#test-results" title="Link to this heading"></a></h1>
+<p>And finally with all of this configured, we have connectivity between the routers.</p>
+<p><em>Ping test from local device on SepsiLab network to Sagan:</em></p>
+<img alt="Ping test from local device on SepsiLab network to Sagan" src="../../_images/pc_sagan_ping.png" />
+<p><em>Traceroute test from local device on SepsiLab network to Sagan:</em></p>
+<img alt="Traceroute test from local device on SepsiLab network to Sagan" src="../../_images/pc_sagan_trace.png" />
+<p><em>Ping test from local device on SepsiLab network to Gala:</em></p>
+<img alt="Ping test from local device on SepsiLab network to Gala" src="../../_images/pc_gala_ping.png" />
+<p><em>Traceroute test from local device on SepsiLab network to Gala:</em></p>
+<img alt="Traceroute test from local device on SepsiLab network to Gala" src="../../_images/pc_gala_trace.png" />
 </section>
 
 

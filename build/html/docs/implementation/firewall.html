@@ -73,13 +73,15 @@
              
   <section id="firewall">
 <h1>Firewall<a class="headerlink" href="#firewall" title="Link to this heading"></a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more information about firewall configuration on MikroTik devices, visit <a class="reference external" href="https://help.mikrotik.com/docs/spaces/ROS/pages/48660574/Filter">MikroTik’s Firewall documentation</a></p>
+</div>
 <p>To secure the routers from unauthorized access, we have to configure some firewall rules. These are used to filter through traffic coming into the router.</p>
-<img alt="Firewall settings of router SepsiLab" src="../../_images/sepsilab_fw.png" />
-<img alt="Firewall settings of router sagan" src="../../_images/sagan_fw.png" />
-<p>Here’s a quick explanation of what each firewall rule does:</p>
 <p><em>SepsiLab:</em></p>
+<img alt="Firewall settings of router SepsiLab" src="../../_images/sepsilab_fw.png" />
 <ul class="simple">
-<li><p><strong>Rule 1</strong>: FastTrack established and related connections in the forward chain to improve performance.</p></li>
+<li><p><strong>Rule 1</strong>: FastTrack established and related connections in the forward chain for faster data throughput, the firewall will work with new connections only.</p></li>
 <li><p><strong>Rule 2</strong>: Allow established and related connections in the input chain for traffic targeting the router.</p></li>
 <li><p><strong>Rule 3</strong>: Allow established and related connections in the forward chain for traffic passing through the router.</p></li>
 <li><p><strong>Rule 4</strong>: Allow incoming WireGuard protocol (UDP) traffic on the input chain.</p></li>
@@ -91,6 +93,7 @@
 <li><p><strong>Rule 10</strong>: Drop all other traffic in the input chain.</p></li>
 </ul>
 <p><em>sagan:</em></p>
+<img alt="Firewall settings of router sagan" src="../../_images/sagan_fw.png" />
 <ul class="simple">
 <li><p><strong>Rule 1</strong>: Allow forwarded traffic from router SepsiLab to router Gala</p></li>
 <li><p><strong>Rule 2</strong>: Allow forwarded traffic from router Gala to router SepsiLab</p></li>
