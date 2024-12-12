@@ -21,3 +21,8 @@ I'll be going over the following points:
 .. include:: ./firewall.rst
 
 .. include:: ./testresults.rst
+
+
+With this info, you should now be able to make your own hub-and-spoke network using MikroTik devices.
+
+Thank you for reading, and have a great rest of your day! ☀️
