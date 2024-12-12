@@ -82,6 +82,8 @@
 <img alt="Ping test from local device on SepsiLab network to Gala" src="../../_images/pc_gala_ping.png" />
 <p><em>Traceroute test from local device on SepsiLab network to Gala:</em></p>
 <img alt="Traceroute test from local device on SepsiLab network to Gala" src="../../_images/pc_gala_trace.png" />
+<p>You might have noticed that the Traceroute results only show the routers in the VPN network (namely SepsiLab, Sagan and Gala). This actually means that our VPN tunnel is encrypting the data properly.</p>
+<p>If the data wasn’t encrypted, the intermediate hops, like the ISP hops, would be giving us a reply on the ICMP request. In reality, it’s not sending anything back because the hops can’t read the request. With this, we can safely say that our data is securely getting transferred.</p>
 </section>
 
 
